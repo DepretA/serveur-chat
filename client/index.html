@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <title>Go Chat</title>
+		<link rel="stylesheet" type="text/css" href="css/style.css" media="all"/>
+		<link rel="shortcut icon" href="img/favicon.ico">
+    </head>
+	<script type="text/javascript" src="js/client.js"></script>
+
+
+    <body onload="donnerFocus('champsPseudo')">
+		<main id="choixPseudo"> <!--style="display: none;"  document.getElementById("content1").style.display = "none";--> 
+			<p> 
+				<img id="logo" src="img/logo.png" alt="logo" />
+			</p>
+			<div id="choixPseudo"> 
+				<label for="champsPseudo" id="labelPseudo"> Pseudo : </label></br>
+				<input type="text" id="champsPseudo" onkeyup="testPseudo(event)" onkeydown="enterPressedFirstForm(event)" tabindex = 1 autofocus /></br>
+				<label for="champsEmail" id="labelEmail"> E-mail Gravatar : </label></br>
+				<input type="text" id="champsEmail" onkeyup="testGravatar()" onkeydown="enterPressedFirstForm(event)" tabindex = 2 /></br>
+				<button  id="boutonRentrer" disabled="disabled" onclick="connexionServeur();">RENTRER</button>
+			</div>
+			<div id="zoneErreur"> 
+			
+			</div>
+		</main>
+
+		<table id = "tableau3Cols" style = "display : none">
+			<div id = "Principale" > <!-- style="display: none; a mettre plus tard par defaut   ------ PARTIE DE FABIEN -->
+				<tr>
+					<td>
+						<div id = "Gauche">
+							<div id = "Salons">
+								<div>
+										<div id = "EnTeteSalons">LISTE DES SALONS</div>
+											<div id = "ZoneSalons">
+										</div>
+
+								</div>
+							</div>
+							<div id = "CreationSalon">
+									<div id = "nomSalon">
+										<input id = "inputNomSalon" type = "text" name = "nomSalon" onkeyup="testSalon()" onkeydown="enterPressedThirdForm(event)" placeholder = "Saisissez le nom du salon à créer/rejoindre" />
+									</div>
+									<div id = "BoutonCreerSalon">
+										<button id = "buttonCreateSaloon" name = "validerNomSalon" disabled="disabled" onclick="creationChangementSalon()"> CRÉER/REJOINDRE UN SALON</button>
+									</div>
+							</div>
+							<div id = "BoutonAccueil">
+								<button id = "buttonGoHome" name = "goHome" onclick="fermetureConnexion()"> ALLEZ A L'ACCUEIL </button>
+							</div>
+						</div>
+					</td>
+					<td>
+						<div id = "Centre">
+							<table id = "firstMessageTable" border = "0">
+								<tr>
+									<td>
+										<div id = "Messages">
+											<div id = "zoneSmileys">
+												<span>
+													<table id = "tableauSmileys">
+														<tr>
+															<td>
+																<img id = "anger" class = "smiley" src = "./img/smileys/anger.PNG" onclick = "addSmileyToChat(this.id)" />
+															</td>
+															<td>
+																<img id = "burn" class = "smiley" src = "./img/smileys/burn.PNG" onclick = "addSmileyToChat(this.id)" />
+															</td>
+															<td>
+																<img id = "confused" class = "smiley" src = "./img/smileys/confused.PNG" onclick = "addSmileyToChat(this.id)" />
+															</td>
+															<td>
+																<img id = "cool" class = "smiley" src = "./img/smileys/cool.PNG" onclick = "addSmileyToChat(this.id)" />
+															</td>
+															<td>
+																<img id = "cry" class = "smiley" src = "./img/smileys/cry.PNG" onclick = "addSmileyToChat(this.id)" />
+															</td>
+															<td>
+																<img id = "fire" class = "smiley" src = "./img/smileys/fire.PNG" onclick = "addSmileyToChat(this.id)" />
+															</td>
+															<td>
+																<img id = "grimace" class = "smiley" src = "./img/smileys/grimace.PNG" onclick = "addSmileyToChat(this.id)" />
+															</td>
+															<td>
+																<img id = "love" class = "smiley" src = "./img/smileys/love.PNG" onclick = "addSmileyToChat(this.id)" />
+															</td>
+															<td>
+																<img id = "miao" class = "smiley" src = "./img/smileys/miao.PNG" onclick = "addSmileyToChat(this.id)" />
+															</td>
+															<td>
+																<img id = "prettiness" class = "smiley" src = "./img/smileys/prettiness.PNG" onclick = "addSmileyToChat(this.id)" />
+															</td>
+														</tr>
+														<tr>
+															<td>
+																:anger:
+															</td>
+															<td>
+																:burn:
+															</td>
+															<td>
+																:confused:
+															</td>
+															<td>
+																:cool:
+															</td>
+															<td>
+																:cry:
+															</td>
+															<td>
+																:fire:
+															</td>
+															<td>
+																:grimace:
+															</td>
+															<td>
+																:love:
+															</td>
+															<td>
+																:miao:
+															</td>
+															<td>
+																:prettiness:
+															</td>
+														</tr>
+														<tr>
+															<td>
+																<img id = "question" class = "smiley" src = "./img/smileys/question.PNG" onclick = "addSmileyToChat(this.id)" />
+															</td>
+															<td>
+																<img id = "shout" class = "smiley" src = "./img/smileys/shout.PNG" onclick = "addSmileyToChat(this.id)" />
+															</td>
+															<td>
+																<img id = "slobber" class = "smiley" src = "./img/smileys/slobber.PNG" onclick = "addSmileyToChat(this.id)" />
+															</td>
+															<td>
+																<img id = "smile" class = "smiley" src = "./img/smileys/smile.PNG" onclick = "addSmileyToChat(this.id)" />
+															</td>
+															<td>
+																<img id = "spook" class = "smiley" src = "./img/smileys/spook.PNG" onclick = "addSmileyToChat(this.id)" />
+															</td>
+															<td>
+																<img id = "startle" class = "smiley" src = "./img/smileys/startle.PNG" onclick = "addSmileyToChat(this.id)" />
+															</td>
+															<td>
+																<img id = "surprise" class = "smiley" src = "./img/smileys/surprise.PNG" onclick = "addSmileyToChat(this.id)" />
+															</td>
+															<td>
+																<img id = "sweat" class = "smiley" src = "./img/smileys/sweat.PNG" onclick = "addSmileyToChat(this.id)" />
+															</td>
+															<td>
+																<img id = "thirst" class = "smiley" src = "./img/smileys/thirst.PNG" onclick = "addSmileyToChat(this.id)" />
+															</td>
+															<td>
+																<img id = "vomit" class = "smiley" src = "./img/smileys/vomit.PNG" onclick = "addSmileyToChat(this.id)" />
+															</td>
+														</tr>
+														<tr>
+															<td>
+																:question:
+															</td>
+															<td>
+																:shout:
+															</td>
+															<td>
+																:slobber:
+															</td>
+															<td>
+																:smile:
+															</td>
+															<td>
+																:spook:
+															</td>
+															<td>
+																:startle:
+															</td>
+															<td>
+																:surprise:
+															</td>
+															<td>
+																:sweat:
+															</td>
+															<td>
+																:thirst:
+															</td>
+															<td>
+																:vomit:
+															</td>
+														</tr>
+													</table>
+												</span>
+											</div>
+											<div id = "NomSalonTop">
+												<span>
+													SALON ACTUEL : Général
+													<div id = "ZoneMessages">
+													</div>
+												</span>
+											</div>
+										</div>
+									</td>
+								</tr>
+								<tr>
+									<td>
+										<div id = "ZoneEcriture">
+											<input id = "champMessage" type = "text" placeholder = "Saisissez votre message" onkeyup="testMessage()" onkeydown="enterPressedSecondForm(event)" tabindex = 3/>
+										</div>
+									</td>
+								</tr>
+							</table>
+							<div id = "SmileyAndSend">
+									<table border = "0">
+										<tr>
+											<td id = "zoneSmiley">
+												<img id = "smileyBouton" src = "./img/smiley2.png" onclick="affichageDivEmoticones()" title = "Aperçu des smileys disponibles"/>
+											</td>
+											<td>
+												<button id = "send" name = "sendMessage" disabled = "disabled" onclick="envoiMessage()"> ENVOYER </button>
+											</td>
+										</tr>
+									</table>
+							</div>
+						</div>
+					</td>
+					<td>
+						<div id = "Droite"> <!-- Liste des utilisateurs -->
+							<div id = "Utilisateurs">
+								<div id = "UtilisateursTop">LISTE DES UTILISATEURS
+									<div id = "ZoneClients">
+									</div>
+								</div>
+							</div>
+						</div>
+					</td>
+				</tr>
+			</div>
+		</table>
+    </body>
+</html>
